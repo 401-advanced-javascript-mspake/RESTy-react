@@ -1,16 +1,17 @@
 import React from 'react';
+import Header from './header';
+import Footer from './footer';
+import Main from './main';
+import './reset.css';
 import './app.css';
 
 function App() {
   return (
-    <div className="app">
-      <header className="App-header">
-        <p>
-          Hello World
-        </p>
-        <p>I'm alive</p>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Main />
+      <Footer />
+    </>
   );
 }
 
