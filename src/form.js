@@ -1,4 +1,9 @@
 import React from 'react';
+import Get from './methods/get';
+import Post from './methods/post';
+import Put from './methods/put';
+import Patch from './methods/patch';
+import Delete from './methods/delete';
 
 class Form extends React.Component {
   constructor(props) {
@@ -9,6 +14,7 @@ class Form extends React.Component {
   saveMethod = (event) => {
     event.preventDefault();
     const method = event.target.value.toUpperCase();
+    console.log(method);
     this.setState({ method });
   }
 
@@ -28,35 +34,20 @@ class Form extends React.Component {
       <>
       <form>
       <section>
-        <input type="text" name="url" placeholder="URL" onChange={this.saveUrl}></input>
+        <input type="text" className="wide" name="url" placeholder="URL" onChange={this.saveUrl}></input>
         <div id="methods">
-        <label>
-            <input type="radio" onClick={this.saveMethod} name="method" value="get"></input>
-            <span>GET</span>
-          </label>
-          <label>
-            <input type="radio" onClick={this.saveMethod} name="method" value="post"></input>
-            <span>POST</span>
-          </label>
-          <label>
-            <input type="radio" onClick={this.saveMethod} name="method" value="put"></input>
-            <span>PUT</span>
-          </label>
-          <label>
-            <input type="radio" onClick={this.saveMethod} name="method" value="patch"></input>
-            <span>PATCH</span>
-          </label>
-          <label>
-            <input type="radio" onClick={this.saveMethod} name="method" value="delete"></input>
-            <span>DELETE</span>
-          </label>
+          <Get saveMethod={this.saveMethod} />
+          <Post saveMethod={this.saveMethod} />
+          <Put saveMethod={this.saveMethod} />
+          <Patch saveMethod={this.saveMethod} />
+          <Delete saveMethod={this.saveMethod} />
           <label>
             <button type="submit" onClick={this.passData}>Go!</button>
           </label>
         </div>
       </section>
 
-      <section>
+      <section className="col-2">
         <div id="body">
           <textarea name="requestBody" placeholder="Raw JSON Body"></textarea>
         </div>
